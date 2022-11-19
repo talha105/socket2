@@ -2,7 +2,12 @@ const webSocketsServerPort = 8000;
 const webSocketServer = require('websocket').server;
 const http = require('http');
 // Spinning the http server and the websocket server.
-const server = http.createServer();
+
+const server = http.createServer((request, response)=>{
+  response.writeHead(200, { "Content-Type": "text/plain" });
+  response.write("Hello World!");
+  response.end()
+});
 server.listen(webSocketsServerPort,()=>{
     console.log("server is running")
 });
